@@ -1,0 +1,151 @@
+#How Legwork Studio uses Git
+
+##Who?
+
+Joseph Smith.  
+(Not a Mormon)
+
+GitHub:  
+https://github.com/technicolorenvy  
+
+Email:  
+joseph.smith@legworkstudio.com
+
+##Why Git?
+
+- Distributed (like Mercurial or Bazaar).
+- Active community.
+- Github.
+	- uptime
+	- issue tracker
+	- easy UI around forking / pull requests (super handy when working on larger open-source projects)
+	- affordable
+
+
+##Legwork's (open) relationship with Git.
+
+Prior to restructuring our workflow, Legwork dabbled with both SVN and GIT, rather noncommittally.
+
+- no branches
+- no plan or process
+- repos were backups of code
+
+
+##Legwork + Git go exclusive.
+
+Once we knew that Git was the way to go, we knew we had to solidify our "process" to meet the needs of our growing team. 
+
+Clearly using branches were a key component, but structured workflows always come with a certain amount of overhead. 
+
+In other words, we had some concerns...
+
+.
+
+- how much time will we lose/spend learning how to really use and leverage Git?
+- It's easy to push off learning a new tool. While grokking the concepts behind branching, merging, and rebasing in a DVCS can seem difficult at first, we found that a nominal investment has gone a long way. No deadlines were missed due to our studies of Git.
+
+.
+
+- how hard will it be to teach other, perhaps more junior, team members?
+- The answer is it depends. GUIs like GitX, Tower or GitHubs's app, can ease the learning process. 
+
+.
+
+- will non-programmers (designers) get it?
+- The short answer. Yes. Again GUIs can help facilitate conceptual understanding with out turning to the Command Line.
+
+
+
+##The Process
+
+A very top-down approach
+
+Origin will always have two branches.
+
+- master
+- dev
+
+*master* will always remain in a deploy or production-ready state.  
+  
+*dev* will be our working development branch. As we create feature branches, they will be created off of, and merged back into, the *dev* branch.  
+
+When *dev* is deemed stable and ready for release, all updates to *dev* will be merged into *master* and deployed.
+
+(show pic here)
+
+
+
+##What does it look like?
+
+Command-line 
+
+let's assume we are in *master* and have an existing *dev* branch
+
+- **git checkout dev**
+  puts us in to *dev*
+
+- **git checkout -b feature dev**
+	will create a new *feature branch* called 'feature' that is created off of the current *dev* branch  
+	commit your changes to this new feature branch as you normally would
+
+- **git checkout dev**  
+	**git merge --no-ff feature**  
+	when you're ready, merge your changes into *dev*
+	
+- **--no-ff**?  
+  --no-ff flag will do a non-fast-forwarded merge. this will create a commit object and will retain the full history of your feature branches in it's full glory.  
+	(img)
+
+- **git push**  
+	push your changes so your teammates have access
+			
+- Rinse and Repeat  
+  When you have merged all your *features* into your *dev* branch for a given release, you are ready to merge back into *master*
+
+- **git checkout master**  
+  **git merge --no-ff dev**  
+	**git push**  
+	Checkout *master* and perform a non-fast-forward merge of *dev* onto *master*  
+
+- Optional
+	**git tag -a tagname -m "human readable tagname"**  
+	**git push --tags**
+	Tag this point in history locally.  
+	Push your current changes as well as the local tags
+	
+- Again, Rinse and Repeat  
+  checkout dev, create a new feature branch, the cycle begins anew
+	
+
+##Gotchas
+
+- This pattern can discourage CI. It is up to you to determine if this is a deal breaker for you.
+- Keep feature branches as short-lived as possible to avoid potential conflicts when merging back to dev
+- If dealing with a long-running feature either:
+	- periodically merge/rebase dev onto your feature branch
+	- use feature toggles. (only recommended if you are running tests)
+
+
+##Communication is Key.
+
+There is no substitution for communication. As VCSs improve over time, merges become more accurate and the potential for conflicts lessen, however many missteps can be avoided by talking with your teammates.
+
+
+##Recap.
+
+- Master is always deploy-able.
+- Dev is akin to a staging area
+- Feature branches are where actual development should occur
+- Communicate with your team.
+
+
+##Git resources (other than the MAN pages) that I have found invaluable.
+
+- Git Cheat http://cheat.errtheblog.com/s/git
+- Github's very friendly help pages http://help.github.com/
+- Two successful Git branching models that we (Legwork Studio) have adapted/modified for our own GIT branching strategies 
+	- http://nvie.com/posts/a-successful-git-branching-model/  
+	- http://scottchacon.com/2011/08/31/github-flow.html
+
+
+

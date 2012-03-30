@@ -1,0 +1,199 @@
+/* DEFAULTS: 320 and up (phone) */
+@media screen and (min-width: 320px) {
+	html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #fafafa;
+	}
+	
+	#tooltip {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 7px;
+    font: normal normal normal 12px/12px 'Helvetica', 'Arial', sans-serif;
+    color: #fff;
+    background-color: #000;
+    z-index: 100;
+    display: none;
+	}
+	
+	#wrapper {
+		width: 100%;
+		height: 100%;
+	}
+	
+	header {
+		width: auto;
+		height: 100px;
+		background-color: #333;
+	}
+	
+	header h1 {
+		font: normal normal normal 16px/70px 'Doppio One', sans-serif;
+		color: #fff;
+		padding: 0 25px;
+	}
+	
+	.lt-ie9 header h1 {
+    display: none;
+	}
+	
+	header h1#ie-message {
+    color: #ff00f0;
+    display: none;
+	}
+	
+	.lt-ie9 header h1#ie-message {
+    display: block;
+	}
+	
+	header #main-nav,
+	header #main-nav ul {
+		width: auto;
+		height: 30px;
+	}
+	
+	header #main-nav ul {
+    background: #666;
+    border-bottom: 1px solid #333;
+	}
+	
+	header #main-nav ul li {
+		float: left;
+		width: 25%;
+		height: 30px;
+	}
+	
+	header #main-nav ul li a {
+		display: block;
+		width: auto;
+		height: 100%;
+		padding: 0 25px;
+		font: normal normal normal 9px/30px 'Helvetica', 'Arial', sans-serif;
+		color: #fff;
+		text-decoration: none;
+		border-right: 1px solid #333;
+	}
+	
+	header #main-nav ul li:first-child a {
+    border-left: 1px solid #333;
+	}
+	
+	#home-page {
+    width: auto;
+    height: 200px;
+    padding: 25px;
+    background-color: #fff;
+	}
+	
+	#home-page #js-message {
+    font: normal normal normal 12px/12px 'Helvetica', 'Arial', sans-serif;
+    color: #333;
+    display: none;
+	}
+	
+	.no-js #home-page #js-message {
+    display: block;
+	}
+	
+	#home-page #canvas-test {
+    width: 270px;
+    height: 200px;
+    margin: 0 auto;
+    background-color: #000;
+	}
+	
+	#home-page #canvas-test #example_cnv {
+		display: block;
+    width: 270px;
+    height: 200px;
+	}
+	
+	footer {
+		width: auto;
+		height: 20px;
+		padding: 10px 25px;
+		background-color: #ccc;
+	}
+	
+	footer span {
+		font: normal normal normal 11px/11px 'Helvetica', 'Arial', sans-serif;
+		color: #777;
+	}
+	
+	/* IE8+ */
+  footer span:after {
+    content: "Here's some shorter legal crap.";
+		font: normal normal normal 9px/9px 'Helvetica', 'Arial', sans-serif;
+		color: #777;
+  }
+}
+
+/* OVERRIDES: 540 and up (tablet) */
+@media screen and (min-width: 540px) {
+	header h1 {
+		font: normal normal normal 24px/70px 'Doppio One', sans-serif;
+	}
+	
+	header #main-nav ul li a {
+		font: normal normal normal 11px/30px 'Helvetica', 'Arial', sans-serif;
+	}
+	
+  footer span:after {
+    content: attr(data-legal);
+		font: normal normal normal 10px/10px 'Helvetica', 'Arial', sans-serif;
+  }
+}
+
+/* OVERRIDES: 1140 and up (desktop) */
+@media screen and (min-width: 1024px) {
+	#wrapper {
+		width: 1024px;
+		margin: auto;
+	}
+	
+	header h1 {
+		font: normal normal normal 32px/70px 'Doppio One', sans-serif;
+	}
+	
+	header #main-nav ul li {
+		float: left;
+		width: 150px;
+		height: 30px;
+	}
+	
+	header #main-nav ul li a {
+		font: normal normal normal 12px/30px 'Helvetica', 'Arial', sans-serif;
+	}
+	
+  footer span:after {
+    content: attr(data-legal);
+		font: normal normal normal 11px/11px 'Helvetica', 'Arial', sans-serif;
+  }
+}
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
