@@ -1,0 +1,14 @@
+/* CSS Document */
+
+* {
+	margin:0px;
+}
+
+#wrapper {
+	
+}
+.page {
+	height:100%;
+	width:100%;
+	position:relative;
+}

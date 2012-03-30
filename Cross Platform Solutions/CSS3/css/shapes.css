@@ -1,0 +1,64 @@
+/*
+PROJECT: Animating with CSS3
+AUTHOR: Drew Dahlman
+*/
+* {
+	margin:10px;
+}
+body {
+	width:100%;
+	height:100%;
+}
+#circle {
+	height:200px;
+	width:200px;
+	background-color:#6085A3;
+	position:relative;
+	border-radius:100%;
+}
+#square {
+	height:200px;
+	width:200px;
+	background-color:#6085A3;
+	position:relative;
+}
+
+/* ANIMATIONS */
+.bounce {
+	-webkit-animation: bounce; /* Animation Name */
+	-webkit-animation-duration:1s; /* How long it should take */
+	-webkit-animation-timing-function:ease-in-out; /* easing */
+	-webkit-animation-iteration-count:15; /* How many times */
+}
+
+@-webkit-keyframes bounce {
+	0% {
+		top:0px;
+	}
+	50%{
+		top:500px;
+	}
+	100% {
+		top:0px;
+	}
+}
+
+
+/* SLIDE RIGHT */
+.slideRight {
+	-webkit-animation: slideRight; /* Animation Name */
+	-webkit-animation-duration:5s; /* How long it should take */
+	-webkit-animation-timing-function:ease-out; /* easing */
+	-webkit-animation-iteration-count:1; /* How many times */
+	-webkit-animation-fill-mode: forwards; /* hold last position */
+}
+
+@-webkit-keyframes slideRight {
+	0% {
+		left:0px;
+	}
+	100% {
+		left:600px;
+		top:500px;
+	}
+}
