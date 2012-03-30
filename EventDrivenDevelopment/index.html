@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+  <head>
+    <title>Develop Denver: Event-Driven Development</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	 
+    <!-- Site CSS -->
+    <link rel="stylesheet" media="all" href="lib/css/screen.css?0.0.0.1" />
+   
+    <!-- Modernizr -->
+    <script src="lib/js/modernizr.js" type="text/javascript"></script>
+    <!-- jQuery -->
+    <script src="lib/js/jquery-1.7.min.js" type="text/javascript"></script>
+    <!-- Utils -->    
+    <script src="lib/js/utils.js?0.0.0.1"></script>
+    <!-- Plugins -->
+    <script src="lib/js/plugins.js" type="text/javascript"></script>
+    <!-- Site JS  -->
+    <script src="lib/js/site.js" type="text/javascript"></script>
+  </head>
+  <body>
+	<div id="fb-root" style=""></div>
+	<div id="blackBar"></div>
+	<div id="header">
+	    	<div class="bar" style="margin-top: 35px;"></div>
+	        <div class="bar" style="margin-top:94px;"></div>
+	        <div class="icons">
+	            <div id="left">
+	                <a href='http://www.developdenver.org/what-is-it/'><div class="nBTN"><img src="http://www.developdenver.org/images/what.png"></div></a>
+	            </div>
+	            <div id="right">
+	                <a href='http://www.developdenver.org/register/'><div class="nBTN"><img src="http://www.developdenver.org/images/register.png"></div></a>
+	            </div>
+	        </div>
+	        <div class="logo">
+	        
+	        <a href='http://www.developdenver.org'><img src="http://www.developdenver.org/images/logo.png"></a>
+	        
+	        </div>
+	        
+	    </div>
+	<div id="wrapper">
+		<div id="content" data-script="Content">
+			<section id="intro">
+				<div id="title-content">
+			    	<div class="shadow" title="Event-Driven">
+			        Event-Driven
+			        </div>
+			        <div  class="shadow" title="Development">
+			        Development
+			        </div>
+		        </div>
+		        <div class="bar"></div>		
+		       <div class="copy">        	
+		       	<p>Event-driven development is a way of developing where different functional elements respond to events that are sent out by the browser or by each other. This is in contrast to a centeral controller telling each item what to do. This is a decentralized approach to development.</p>
+		       	</div>
+	       	</section>
+	       	<section id="architechture">
+	       		<h1>Event-Driven Architecture</h1>
+	       	    <div class="bar"></div>		
+	       	   <div class="copy">        	
+		       	   <ul>
+		       	   	<li>Control is decentralized</li>
+		       	   	<li>Think in terms of events, not functions</li>
+		       	   	<li>Elements are less dependent on each other</li>
+		       	   </ul>
+	       	   </div>
+	       	</section>
+	       	<section id="cssandjavascript">
+	       		<h1>CSS and JavaScript</h1>
+	       	    <div class="bar"></div>		
+	       	   <div class="copy">        	
+	       		   <ul>
+	       		   	<li>Know when to use each one</li>
+	       		   	<li>Get them to work together</li>
+	       		   	<li>Understand performance of each</li>
+	       		   </ul>
+	       		   
+	       		   <h2>When to use CSS vs JavaScript</h2>
+	       		   <li>Whenever possible, use css to modify layout</li>
+	       		   <li>Use javascript to control css</li>
+	       		   <li>Use javascript for animations.</li>
+	       		   <li>Use JavaScript to aid in layout if it cleans up the page.</li>
+	       	   </div>
+	       	</section>
+	       	<section id="cssandjavascript">
+	       		<h1>How It's Done</h1>
+	       	    <div class="bar"></div>		
+	       	   <div class="copy">        	
+	       		   <ul>
+	       		   	<li>Define variables for events</li>
+	       		   	<li>Define variables for elements</li>
+	       		   	<li>Define a variable for your general listenng object (usually window)</li>
+	       		   	<li>Avoid calculating on rapidly fired events (scroll and resize).
+	       		   		<ul>
+	       		   			<li>Use throttling when possible.</li>
+	       		   			<li>Define window height and width before telling elements to resize.</li>
+	       		   		</ul>
+	       		   	</li>  
+	       		   	<li>$.Window.on and $.Window.triggerHandler</li>
+	       		   </ul>
+	       	   </div>
+	       	</section>
+	       	<section id="varsforevents">
+	       		<h1>Define Variables For Events</h1>
+	       	    <div class="bar"></div>		
+	       	   	<div class="copy">        	
+	       		   <p class="code"><pre>
+//define basic browser elements and an events object
+$.Body = $('body');
+$.Window = $(window);
+$.Scroll = ($.browser.mozilla || $.browser.msie) ? $('html') : $.Body;
+$.Events = {
+    ACTIVATE_SECTION: 'activateNavItem',
+    NAV_SELECTED: 'navSelected',
+    KEY_UP: 'keyUp',
+    KEY_DOWN: 'keyDown',
+    KEY_RIGHT: 'keyRight',
+    KEY_LEFT: 'keyLeft',
+    LOAD_CONTENT: 'loadContent',
+    RESIZE: 'resizeSite',
+    RESIZE_COMPLETE: 'resizeSiteComplete',
+    SCROLL_COMPLETE: 'scrollComplete',
+    CLICK: 'click',
+    MOUSE_OVER: 'mouseover',
+    MOUSE_OUT: 'mouseout',
+    MOUSE_ENTER: 'mouseenter',
+    MOUSE_LEAVE: 'mouseleave',
+    MOUSE_DOWN: 'mousedown',
+    MOUSE_UP: 'mouseup',
+    SCROLL: 'scroll',
+    CHECK_ACTIVE_INDEX: 'checkActiveIndex',
+} // Events
+	       		   </pre></p>
+	       	   </div>
+	       	</section>
+			<section id="listenforevents">
+	       		<h1>Listen For Events</h1>
+	       	    <div class="bar"></div>		
+	       	   	<div class="copy">        	
+	       	   	<ul>
+	       	   		<li>We're used to listening to click events on links
+	       	   			<pre>
+//typical construct of listening for a click event on a link
+$("#myLink").click(function() {
+	//do something
+});
+	       	   			</pre>
+	       	   		</li>				       	   	
+	       	   		<li>Now, we listen on a generic object such as window
+<pre>				       	   		
+//this function makes listening for events look cleaner
+function register(evt,handler) {
+	$.Window.on(evt,handler);
+}
+
+//register what this element is listening for
+register($.Events.RESIZE,_resize);
+register($.Events.CHECK_ACTIVE_INDEX,_onChecksectionIndex);
+register($.Events.SCROLL,$.throttle(100,_onScroll));
+</pre>
+	       	   		</li>
+	       	   	</ul>
+	       	   </div>
+	       	</section>
+	       	<section id="triggerevents">
+	       		       		<h1>Trigger Events</h1>
+	       		       	    <div class="bar"></div>		
+	       		       	   	<div class="copy">        	
+	       		       	   	<ul>
+	       		       	   		<li>Use our generic object to trigger an event on
+	       		       	   			<pre>
+//&lt;a href="#" id="my-link"&gt;My Link&lt;/a&gt;	       		       	   		
+var _myLink = $("#myLink");
+_myLinkName = _myLink.attr("id");
+_myLink.on($.Events.CLICK,_onClick);
+
+function _onClick(evt) {
+	evt.preventDefault();
+	$.Window.triggerHandler($.Events.NAV_SELECTED,_myLinkName);
+}
+	       		       	   			</pre>
+	       		       	   		</li>
+	       		       	   	</ul>
+	       		       	   </div>
+	       		       	</section>
+	       		       	<section id="pitfalls">
+	       		       		<h1>Pitfalls of Event-Driven Development</h1>
+	       		       	    <div class="bar"></div>		
+	       		       	   <div class="copy">        	
+	       		       		   <ul>
+	       		       		   	<li>Some operations are time dependant or sequential.
+	       		       		   		<ul><li>Dont drive yourself crazy trying to sequence events</li></ul>
+	       		       		   	</li>
+	       		       		   	<li>Sometimes you can get lost trying to figure out what is affecting what (especially with resizing)</li>
+	       		       		   </ul>
+	       		       	   </div>
+	       		       	</section>
+			<div class="spacer"></div>
+	<nav class="navigation primary">
+		<a href="#" class="active">INTRODUCTION</a>
+		<a href="#">EVENT-DRIVEN<br/>ARCHITECTURE</a>
+		<a href="#">CSS AND JAVASCRIPT</a>
+		<a href="#">HOW IT'S DONE</a>
+		<a href="#">DEFINE EVENTS</a>
+		<a href="#">LISTEN FOR EVENTS</a>
+		<a href="#">TRIGGER EVENTS</a>
+		<a href="#">PITFALLS</a>
+	</nav>
+  </body>
+</html>
